@@ -89,14 +89,14 @@ let dataSearch = (value)=>{
       <Routes> 
       {/* <Route path='/up' element={<SignUpUser/>} />
       <Route path='/login' element={<Singin setName={setName}/>} />  */}
-{/* 
+
        
    <Route exact path ="/pro" element={<Prof/>}/>
     <Route exact path="/ProductList" element={<ProductList/>}/>
 
     <Route exact path="/search" element={<Search dataFiltred={dataSearch}/>}/> 
     <Route exact path="/product" element={<ProductDetails data={singleProduct}/>}/>
-    <Route exact path="/" element={<Home setSingleProduct={setSingleProduct} data = {products}/>}/> */}
+    <Route exact path="/" element={<Home setSingleProduct={setSingleProduct} data = {products}/>}/>
     <Route path='/up' element={<Signeupf/>} /> 
     <Route path='/loginf' element={<Signf setcompanyName={setcompanyName}/>}/>
     <Route exact path='/dash' element={< Main/>}/>

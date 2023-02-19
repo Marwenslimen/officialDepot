@@ -8,7 +8,7 @@ function Prof(props) {
  
 console.log("Props of profile",props)
 
-
+console.log("fornisseur image ",props.Fournisseur[0].image);
    
 
   return (
@@ -16,7 +16,7 @@ console.log("Props of profile",props)
     <div>
  
 <div class="cardDash">
-     <div> <img src="img.jpg"  />
+     <div> <img src={props.Fournisseur[0].image}   width="50px"/>
   <h1>{props.Fournisseur[0].manager}</h1>
   <p class="title">CEO & Founder,{props.Fournisseur[0].CompanyName} </p>
   <p>Harvard University</p>
