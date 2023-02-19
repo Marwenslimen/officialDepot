@@ -16,7 +16,7 @@ module.exports = {
 
     addProduct:async (req, res)=> {
          
-const {name, description,price, quantity,image,category,foreignKey}=req.body;
+const {name, description,price, quantity,image,category,fournisseurId}=req.body;
 
 try{
     const result = await cloudinary.uploader.upload(image,{
@@ -32,7 +32,7 @@ try{
                 // url:result.secure_url,
             ,
             category,
-            foreignKey
+            fournisseurId
         }
 
 )
@@ -80,8 +80,9 @@ deleteProduct:async (req, res)=> {
     res.status(200).send('Product deleted')
 },
 
-getOne:async (req, res)=> {
-    const product = await Product.findOne({ where: { id: req.params.id } })
-    res.status(200).send(product)
+getFournisseurproduct: async (req, res)=> {
+    console.log("id ind controller", req.body.fournisseurId);
+const product = await Product.findAll({where:{fournisseurId:req.body.fournisseurId}})
+res.status(200).send(product)
 }
 }

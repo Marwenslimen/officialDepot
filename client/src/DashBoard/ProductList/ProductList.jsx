@@ -4,7 +4,8 @@ import Cases from './Cases.jsx';
 import PopOutUpdate from './PopOutUpdate.jsx';
 
 
-const ProductList = () => {
+const ProductList = (props) => {
+  console.log("fournisseur id in product list",props.four.id);
     const [products,setProducts]=useState([])
     const [change,setChange]=useState(false); 
     const [openForm,setOpenForm]=useState(false); // to open creating update form
@@ -24,7 +25,10 @@ const ProductList = () => {
 
 // fetching data
  useEffect(() => {
-    axios.get('/api/product/getAllp')
+    axios.get('/api/product/fournisseurproduct',{
+      body: {
+      fournisseurId:props.four.id
+  }})
     .then(result=>{console.log(result)
     setProducts(result.data)})
     .catch(err=>console.log(err))
@@ -78,7 +82,7 @@ const onDelete =(product) => {
     <div>
 
 <button onClick={()=>onClick()} >Create a new product</button>
-{openForm && <Cases change={change} setChange={setChange}/>}
+{openForm && <Cases four={props.four} change={change} setChange={setChange}/>}
 
 
     <table id="customers">

@@ -4,7 +4,7 @@ import axios from 'axios';
 const Cases = (props) => {
 
 
-  console.log(props);
+  console.log("current fournisseur in cases",props.four.id);
  const [name,setName]=useState("");
  const [price,setPrice]=useState(0);
  const [description,setDescription]=useState("");
@@ -78,12 +78,13 @@ const submitForm=()=>{
       "description":description,
       "category":category,
       "quantity":quantity,
+      "fournisseurId":props.four.id,
     
   }
 
   axios.post('api/product/addp', data)
   .then(response=> {console.log(response)
-    props.setChange(!props.change)
+    // props.setChange(!props.change)
  })
   .catch(err=> console.log(err))
 

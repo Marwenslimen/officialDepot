@@ -66,7 +66,7 @@ signUp:async(req,res)=>{
             const fournisseur=await Fournisseur.create({CompanyName,
                 manager,
                 email,
-                password:await bcrypt.hash(password,10) ,
+                password:await bcrypt.hash(password,10),
                 image:result.secure_url ,
                 adress,
             });
@@ -74,7 +74,7 @@ signUp:async(req,res)=>{
    //generate token with the fournisseur's id and the secretKey in the env file
    // set cookie with the token generated
    if(fournisseur){
-    let token=jwt.sign({id:fournisseur.id},process.env.SECRET_KEY,{
+    let token=jwt.sign({id:fournisseur.id,manager:fournisseur.manger},process.env.SECRET_KEY,{
         expiresIn:1*24*60*60*1000,
     })
     // res.cookie('jwt',token )

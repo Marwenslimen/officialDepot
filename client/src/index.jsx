@@ -14,7 +14,7 @@ import ProductDetails from './pages/ProductDetails.jsx'
 import Favorite from './pages/Favorite.jsx';
 import Electronic from './pages/Electronic.jsx';
 
-import Signf from './Signf.jsx'
+import Signf from './pages/Signf.jsx'
 import Signeupf from './pages/Signeupf.jsx'
 import Search from './components/Search.jsx';
 const App = () => {
