@@ -5,7 +5,7 @@ import PopOutUpdate from './PopOutUpdate.jsx';
 
 
 const ProductList = (props) => {
-  console.log("fournisseur id in product list",props.four.id);
+  console.log("fournisseur id in product list",props.four);
     const [products,setProducts]=useState([])
     const [change,setChange]=useState(false); 
     const [openForm,setOpenForm]=useState(false); // to open creating update form
@@ -23,12 +23,10 @@ const ProductList = (props) => {
     // const [quantity,setQuantity]=useState("")
 
 
-// fetching data
+// fetching data belong to the current fournisseur 
  useEffect(() => {
-    axios.get('/api/product/fournisseurproduct',{
-      body: {
-      fournisseurId:props.four.id
-  }})
+let id=props.four.id
+    axios.get(`/api/product/fournisseurproduct/${id}`)
     .then(result=>{console.log(result)
     setProducts(result.data)})
     .catch(err=>console.log(err))
@@ -42,7 +40,7 @@ setChange(!change)
 
 
   //onclick open create product inputs 
-  const onClick =() => {
+  const togglePopupCreate =() => {
 setOpenForm(!openForm)   
   setChange(!change);
 }
@@ -81,8 +79,8 @@ const onDelete =(product) => {
   return (
     <div>
 
-<button onClick={()=>onClick()} >Create a new product</button>
-{openForm && <Cases four={props.four} change={change} setChange={setChange}/>}
+<button onClick={()=>togglePopupCreate()} >Create a new product</button>
+{openForm && <Cases four={props.four}  closePop={togglePopupCreate}/>}
 
 
     <table id="customers">

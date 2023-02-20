@@ -37,7 +37,9 @@ db.Product.belongsToMany(db.User,{
 
 // 1  to many relationship  product fournisseur
 db.Fournisseur.hasMany(db.Product)
-  db.Product.belongsTo(db.Fournisseur)
+  db.Product.belongsTo(db.Fournisseur,{
+    foreignKey: 'fournisseurId'}
+  )
 
 sequelize.authenticate()
 .then(()=>{console.log('Successfully authenticated')})

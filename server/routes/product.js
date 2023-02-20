@@ -16,6 +16,6 @@ router.put('/updatep/:id', product.updateProduct);
 router.delete('/deletep/:id', product.deleteProduct);
 
 // to get all  with fournisseur id 
-router.get('/fournisseurproduct', product.getFournisseurproduct); 
+router.get('/fournisseurproduct/:id', product.getFournisseurproduct); 
 
 module.exports = router;

@@ -4,7 +4,7 @@ import axios from 'axios';
 const Cases = (props) => {
 
 
-  console.log("current fournisseur in cases",props.four.id);
+  console.log("current fournisseur in cases",props);
  const [name,setName]=useState("");
  const [price,setPrice]=useState(0);
  const [description,setDescription]=useState("");
@@ -84,17 +84,18 @@ const submitForm=()=>{
 
   axios.post('api/product/addp', data)
   .then(response=> {console.log(response)
-    // props.setChange(!props.change)
  })
   .catch(err=> console.log(err))
 
-// window.location.reload(false);
 
   }
  
 
 
   return (
+    <div className='popup-box'>
+      <div className='box'>
+        <span className='close-icon' onClick={props.closePop}>x</span>
 <form>
 <input type="text" name="name" onChange={handleChangeName} placeholder='Product Name ..?' />
 <input type="number" name="price" onChange={handleChangePrice}  placeholder='Product Price in TND ..?' />
@@ -105,6 +106,8 @@ const submitForm=()=>{
 <button type="submit" onClick={submitForm}>Create</button>
 
 </form>
+</div>
+</div>
   )
 }
 

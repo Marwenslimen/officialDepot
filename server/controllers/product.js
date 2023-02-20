@@ -82,7 +82,10 @@ deleteProduct:async (req, res)=> {
 
 getFournisseurproduct: async (req, res)=> {
     console.log("id ind controller", req.body.fournisseurId);
-const product = await Product.findAll({where:{fournisseurId:req.body.fournisseurId}})
+const product = await Product.findAll({
+    where: { fournisseurId: req.params.id }
+    
+  })
 res.status(200).send(product)
 }
 }
